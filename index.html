@@ -583,19 +583,6 @@ footer{border-top:1px solid var(--line);padding:32px 28px;text-align:center;font
 .stat-pill{border:1px solid var(--line);background:var(--paper-dim);border-radius:14px;padding:12px 18px;flex:1;min-width:140px;}
 .stat-pill .stat-num{font-family:'Fraunces',serif;font-size:24px;line-height:1;}
 .stat-pill .stat-label{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;}
-.badges-pill:hover{border-color:var(--accent-d);}
-.badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;max-height:60vh;overflow-y:auto;}
-.badge-card{border:1.5px solid var(--line);border-radius:14px;padding:14px 12px;text-align:center;background:var(--paper-dim);position:relative;transition:transform 0.2s ease,border-color 0.2s ease;}
-.badge-card.unlocked{border-color:var(--accent-d);}
-.badge-card.locked{opacity:0.45;filter:grayscale(1);}
-.badge-card .badge-emoji{font-size:32px;display:block;margin-bottom:8px;}
-.badge-card .badge-name{font-weight:700;font-size:13px;}
-.badge-card .badge-desc{font-size:11px;color:var(--ink-soft);margin-top:4px;line-height:1.4;}
-.badge-card.equipped{background:linear-gradient(160deg, color-mix(in srgb, #f0c869 18%, var(--paper-dim)), var(--paper-dim) 60%);}
-.badge-card .badge-equip-btn{margin-top:10px;font-size:11px;padding:5px 10px;border-radius:12px;border:1px solid var(--accent-d);background:transparent;color:var(--accent-d);font-weight:700;cursor:pointer;}
-.badge-card .badge-equip-btn.active{background:var(--accent-d);color:var(--paper);}
-.badge-card .badge-premium-lock{font-size:10.5px;color:#a9791f;font-weight:700;margin-top:8px;}
-.lb-badge-icon{font-size:16px;margin-right:2px;}
 .grid-quiz{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:50px;}
 .quiz-card{border:1px solid var(--line);background:var(--paper-dim);border-radius:10px;padding:22px;position:relative;transition:transform .2s ease,box-shadow .2s ease;}
 .quiz-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(38,54,47,0.08);}
@@ -727,7 +714,6 @@ if(!localStorage.getItem('rn_disclaimer_ok_v2')){
         <option value="hi">🇮🇳 हिन्दी</option>
         <option value="ar">🇸🇦 العربية</option>
       </select>
-      <button class="nav-btn premium-btn" data-page="premium" data-i18n="nav_premium">Premium</button>
     </div>
   </div>
 </header>
@@ -999,10 +985,6 @@ if(!localStorage.getItem('rn_disclaimer_ok_v2')){
       <div class="stat-pill"><div class="stat-num" id="qs-points">0</div><div class="stat-label" data-i18n="quiz_stat_points">Points totaux</div></div>
       <div class="stat-pill"><div class="stat-num" id="qs-streak">0 🔥</div><div class="stat-label" data-i18n="quiz_stat_streak">Meilleure série</div></div>
       <div class="stat-pill"><div class="stat-num" id="qs-done">0</div><div class="stat-label" data-i18n="quiz_stat_done">Quizs complétés</div></div>
-      <div class="stat-pill badges-pill" onclick="openBadges()" style="cursor:pointer;">
-        <div class="stat-num" id="qs-badges">🎖️ 0/0</div>
-        <div class="stat-label">Mes badges</div>
-      </div>
     </div>
     <div class="subject-toggle" id="quiz-subject-toggle"></div>
     <div class="quiz-mode-toggle" id="quiz-mode-toggle">
@@ -1039,33 +1021,6 @@ if(!localStorage.getItem('rn_disclaimer_ok_v2')){
     <div id="notes-list"></div>
   </section>
 
-  <!-- PREMIUM -->
-  <section class="page" id="page-premium">
-    <div class="sec-head"><div><span class="eyebrow" data-i18n="premium_eyebrow">Abonnement</span><h2 data-i18n="premium_title">Débloquer plus de fonctionnalités</h2></div></div>
-    <div class="info-banner"><span class="dot"></span><span>Démo uniquement — aucun paiement réel n'est traité sur ce site.</span></div>
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div class="plan-name">🧭 <span data-i18n="plan1_name">Visiteur</span></div>
-        <div class="plan-price">0€<span class="plan-per" data-i18n="per_month"> /mois</span></div>
-        <ul class="plan-feats">
-          <li data-i18n="plan1_f1">Accès à l'intégralité de l'encyclopédie</li>
-          <li data-i18n="plan1_f2">Accès à 20 quizs SVT / Physique-Chimie</li>
-          <li data-i18n="plan1_f3">Accès au forum</li>
-        </ul>
-        <button class="btn ghost" disabled data-i18n="plan1_btn">Formule actuelle</button>
-      </div>
-      <div class="plan-card highlight">
-        <div class="plan-name">🚀 <span data-i18n="plan2_name">Chercheur</span></div>
-        <div class="plan-price">1,99€<span class="plan-per" data-i18n="per_month"> /mois</span></div>
-        <ul class="plan-feats">
-          <li data-i18n="plan2_f1">Accès à l'intégralité des quizs SVT / Physique-Chimie</li>
-          <li data-i18n="plan2_f2">Accès à différents badges</li>
-          <li data-i18n="plan2_f3">Possibilité de raviver sa winstreak</li>
-        </ul>
-        <button class="btn" onclick="premiumAlert()" data-i18n="plan_cta">Passer Chercheur</button>
-      </div>
-    </div>
-  </section>
 
 </main>
 
@@ -1084,15 +1039,6 @@ if(!localStorage.getItem('rn_disclaimer_ok_v2')){
   <div class="modal-box profile-box">
     <button class="modal-close" onclick="closeProfile()">✕</button>
     <div id="profile-content"></div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="badges-modal">
-  <div class="modal-box profile-box">
-    <button class="modal-close" onclick="closeBadges()">✕</button>
-    <h3 style="margin-bottom:4px;">🎖️ Mes badges</h3>
-    <p id="badges-sub" style="font-size:13px;color:var(--ink-soft);margin-bottom:16px;"></p>
-    <div id="badges-grid" class="badges-grid"></div>
   </div>
 </div>
 
@@ -1181,7 +1127,7 @@ if(!localStorage.getItem('rn_disclaimer_ok_v2')){
     <h3 data-i18n="comments_title">Laisser un commentaire</h3>
     <p data-i18n="comments_text">Votre avis nous aide à améliorer Research Novice.</p>
     <textarea id="comment-input" data-i18n-placeholder="comments_ph" placeholder="Qu'avez-vous pensé du site ?" style="width:100%;min-height:80px;background:var(--paper-dim);padding:12px 14px;border-radius:6px;font-size:14px;border:1px solid var(--line);font-family:inherit;resize:vertical;margin-top:12px;"></textarea>
-    <button class="btn" style="margin-top:12px;width:100%;" data-i18n="comments_submit" onclick="addComment()">Envoyer</button>
+    <button class="btn" style="margin-top:12px;width:100%;" id="comment-submit-btn" data-i18n="comments_submit" onclick="addComment()">Envoyer</button>
     <div class="comment-list" id="comment-list"></div>
   </div>
 </div>
@@ -2810,15 +2756,6 @@ function logout(){
   closeSettings();
 }
 
-/* ================= Premium ================= */
-function premiumAlert(){
-  if(!auth.currentUser){ openLogin(); return; }
-  // Lien de paiement Stripe (mode test pour l'instant). L'email est pré-rempli pour relier
-  // plus tard le paiement au compte du site.
-  const stripeLink = "https://buy.stripe.com/test_7sY8wP0yFgLBcDV68Ld7q00";
-  window.location.href = stripeLink + "?prefilled_email=" + encodeURIComponent(auth.currentUser.email);
-}
-
 /* ================= Menu 3 points ================= */
 function toggleDotsMenu(){document.getElementById('dots-menu').classList.toggle('show');}
 function closeDotsMenu(){document.getElementById('dots-menu').classList.remove('show');}
@@ -2942,20 +2879,35 @@ function stopMusic(){
 }
 
 /* ================= Commentaires ================= */
-let comments = [];
 function openComments(){closeDotsMenu();renderComments();document.getElementById('comments-modal').classList.add('show');}
 function closeComments(){document.getElementById('comments-modal').classList.remove('show');}
 document.getElementById('comments-modal').addEventListener('click',e=>{if(e.target.id==='comments-modal')closeComments();});
 function addComment(){
-  const val = document.getElementById('comment-input').value.trim();
+  const input = document.getElementById('comment-input');
+  const btn = document.getElementById('comment-submit-btn');
+  const val = input.value.trim();
   if(!val) return;
-  comments.unshift({text:val,date:new Date().toLocaleDateString(currentLang)});
-  document.getElementById('comment-input').value='';
-  renderComments();
+  btn.disabled = true;
+  db.collection('feedback').add({
+    text: val,
+    email: (auth.currentUser && auth.currentUser.email) || null,
+    displayName: (auth.currentUser && auth.currentUser.displayName) || null,
+    page: window.location.pathname,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(()=>{
+    input.value = '';
+    const list = document.getElementById('comment-list');
+    list.innerHTML = '<div class="comment-item">Merci ! Votre message a bien été envoyé à l\'équipe de Research Novice. 🙏</div>';
+    btn.disabled = false;
+  }).catch(err=>{
+    console.error('Erreur lors de l\'envoi du commentaire :', err);
+    alert("Impossible d'envoyer votre message pour l'instant. Réessayez plus tard.");
+    btn.disabled = false;
+  });
 }
 function renderComments(){
   const list = document.getElementById('comment-list');
-  list.innerHTML = comments.length ? comments.map(c=>`<div class="comment-item">${c.text} <span style="opacity:0.6;">— ${c.date}</span></div>`).join('') : '<div class="comment-item">Aucun commentaire pour l\'instant. Soyez le premier à donner votre avis !</div>';
+  list.innerHTML = '<div class="comment-item">Un avis, une question, un bug à signaler ? Écrivez-nous ci-dessus, votre message est envoyé directement à l\'équipe.</div>';
 }
 
 /* ================= Quiz : génération des questions ================= */
@@ -3178,14 +3130,14 @@ THEME_POOL_CATS.forEach(cat=>{
 });
 
 
-let playerStats = {totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null, selectedBadge:null};
+let playerStats = {totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null};
 let quizBests = {};
 let statsLoaded = false; // passe à true une fois les vraies stats du compte chargées depuis Firestore
 // Charge les statistiques réelles du compte connecté (ou les remet à zéro si déconnecté).
 function loadUserStats(user){
   statsLoaded = false;
   if(!user){
-    playerStats = {totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null, selectedBadge:null};
+    playerStats = {totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null};
     quizBests = {};
     statsLoaded = true;
     updateQuizStatsBar(); renderQuizGrid(); renderLeaderboard();
@@ -3194,14 +3146,14 @@ function loadUserStats(user){
   db.collection('users').doc(user.uid).get().then(doc=>{
     if(doc.exists){
       const d = doc.data();
-      playerStats = {totalPoints:d.totalPoints||0, bestStreak:d.bestStreak||0, quizzesDone:d.quizzesDone||0, bestRank:d.bestRank||null, selectedBadge:d.selectedBadge||null};
+      playerStats = {totalPoints:d.totalPoints||0, bestStreak:d.bestStreak||0, quizzesDone:d.quizzesDone||0, bestRank:d.bestRank||null};
       quizBests = d.quizBests || {};
     } else {
-      playerStats = {totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null, selectedBadge:null};
+      playerStats = {totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null};
       quizBests = {};
       db.collection('users').doc(user.uid).set({
         displayName: user.email.split('@')[0],
-        totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null, quizBests:{}, selectedBadge:null,
+        totalPoints:0, bestStreak:0, quizzesDone:0, bestRank:null, quizBests:{},
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     }
@@ -3218,7 +3170,6 @@ function saveUserStats(){
     quizzesDone: playerStats.quizzesDone,
     bestRank: playerStats.bestRank,
     quizBests: quizBests,
-    selectedBadge: playerStats.selectedBadge || null,
     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
   }, {merge:true}).catch(err=>console.error('Erreur de sauvegarde du profil :', err));
 }
@@ -3229,72 +3180,14 @@ let activeQuizLevel = 'all';
 let isPremiumUser = false;
 const FREE_QUIZ_LIMIT = 20;
 function unlockedQuizIds(subject){
-  if(isPremiumUser || subject==='chem') return null; // null = pas de restriction
-  const niveauQ = QUIZZES.filter(q=>q.subject===subject && q.mode==='niveau');
-  const themeQ = QUIZZES.filter(q=>q.subject===subject && q.mode==='theme');
-  const ordered = [...niveauQ, ...themeQ];
-  return new Set(ordered.slice(0, FREE_QUIZ_LIMIT).map(q=>q.id));
+  return null; // Premium désactivé pour l'instant : tous les quiz sont en accès libre, aucun badge de verrouillage
 }
 let currentQuiz = null;
-
-/* ================= Badges ================= */
-// Tous les badges se débloquent gratuitement grâce aux stats de quiz (aucune obligation de payer
-// pour les débloquer). Ce qui est réservé à l'offre Chercheur, c'est de pouvoir en ÉQUIPER un pour
-// l'afficher à côté de son nom dans le classement.
-const BADGES = [
-  {id:'premier_pas', emoji:'🌱', name:'Premier pas', desc:"Terminer un premier quiz", check:p=>p.quizzesDone>=1},
-  {id:'serie5', emoji:'🔥', name:'Série de 5', desc:"Enchaîner 5 bonnes réponses d'affilée", check:p=>p.bestStreak>=5},
-  {id:'serie10', emoji:'⚡', name:'Série de 10', desc:"Enchaîner 10 bonnes réponses d'affilée", check:p=>p.bestStreak>=10},
-  {id:'assidu', emoji:'🎓', name:'Assidu', desc:"Terminer 10 quiz", check:p=>p.quizzesDone>=10},
-  {id:'expert', emoji:'🧪', name:'Expert', desc:"Terminer 30 quiz", check:p=>p.quizzesDone>=30},
-  {id:'top3', emoji:'🥉', name:'Podium', desc:"Atteindre le top 3 du classement", check:p=>p.bestRank && p.bestRank<=3},
-  {id:'numero1', emoji:'👑', name:'Numéro 1', desc:"Être 1ᵉʳ du classement", check:p=>p.bestRank===1},
-  {id:'centurion', emoji:'⭐', name:'Centurion', desc:"Cumuler 500 points", check:p=>p.totalPoints>=500},
-  {id:'millenaire', emoji:'💯', name:'Millénaire', desc:"Cumuler 1000 points", check:p=>p.totalPoints>=1000},
-];
-function openBadges(){
-  if(!auth.currentUser){ openLogin(); return; }
-  renderBadges();
-  document.getElementById('badges-modal').classList.add('show');
-}
-function closeBadges(){ document.getElementById('badges-modal').classList.remove('show'); }
-document.getElementById('badges-modal').addEventListener('click',e=>{if(e.target.id==='badges-modal')closeBadges();});
-function renderBadges(){
-  const unlockedCount = BADGES.filter(b=>b.check(playerStats)).length;
-  document.getElementById('badges-sub').textContent = isPremiumUser
-    ? `${unlockedCount}/${BADGES.length} débloqués — clique sur un badge débloqué pour l'équiper.`
-    : `${unlockedCount}/${BADGES.length} débloqués — l'offre Chercheur permet d'en équiper un pour l'afficher dans le classement.`;
-  document.getElementById('badges-grid').innerHTML = BADGES.map(b=>{
-    const unlocked = b.check(playerStats);
-    const equipped = playerStats.selectedBadge === b.id;
-    let extra = '';
-    if(unlocked && isPremiumUser){
-      extra = `<button class="badge-equip-btn ${equipped?'active':''}" onclick="selectBadge('${equipped?'':b.id}')">${equipped?'Équipé ✓':'Équiper'}</button>`;
-    } else if(unlocked && !isPremiumUser){
-      extra = `<div class="badge-premium-lock">🔒 Chercheur pour l'équiper</div>`;
-    }
-    return `<div class="badge-card ${unlocked?'unlocked':'locked'} ${equipped?'equipped':''}">
-      <span class="badge-emoji">${b.emoji}</span>
-      <div class="badge-name">${b.name}</div>
-      <div class="badge-desc">${b.desc}</div>
-      ${extra}
-    </div>`;
-  }).join('');
-}
-function selectBadge(id){
-  if(!isPremiumUser) return;
-  playerStats.selectedBadge = id || null;
-  saveUserStats();
-  renderBadges();
-  renderLeaderboard();
-}
 
 function updateQuizStatsBar(){
   document.getElementById('qs-points').textContent = playerStats.totalPoints;
   document.getElementById('qs-streak').textContent = playerStats.bestStreak+' 🔥';
   document.getElementById('qs-done').textContent = playerStats.quizzesDone;
-  const unlockedCount = BADGES.filter(b=>b.check(playerStats)).length;
-  document.getElementById('qs-badges').textContent = `🎖️ ${unlockedCount}/${BADGES.length}`;
 }
 
 let quizMode = 'niveau';
@@ -3310,14 +3203,8 @@ function renderQuizGrid(){
   const schemaMeta = q => q.subject!=='svt'
     ? `<span>🧠 questions conceptuelles</span>`
     : `<span>📊 min. ${minSchemasFor(q.length)} schéma${minSchemasFor(q.length)>1?'s':''}</span>`;
-  // Mode visiteur : les thèmes SVT et Physique-Chimie sont limités à 20 quiz en accès libre chacun
-  // (le tableau périodique reste en accès libre complet). Au-delà, un badge "Premium" invite à
-  // débloquer le reste du catalogue plutôt que de bloquer complètement la page.
-  const unlocked = unlockedQuizIds(activeSubject);
-  const isLocked = q => unlocked && !unlocked.has(q.id);
-  const lockOverlay = q => isLocked(q)
-    ? `<div class="quiz-lock"><span>🔒 Premium</span><button class="btn mini" onclick="goPage('premium')">Débloquer</button></div>`
-    : `<div class="quiz-actions">
+  // Tous les quiz sont actuellement en accès libre (mode Premium désactivé pour l'instant).
+  const lockOverlay = q => `<div class="quiz-actions">
         <button class="btn mini" onclick="startQuiz('${q.id}')">Jouer</button>
         <button class="btn mini review" onclick="reviserQuiz('${q.id}')">📖 Réviser</button>
       </div>`;
@@ -3328,7 +3215,7 @@ function renderQuizGrid(){
     if(list.length===0){ grid.innerHTML = '<div class="no-results">Aucun quiz de spécialisation sur ce thème pour le moment — mais les fiches restent disponibles dans l\'encyclopédie.</div>'; return; }
     grid.innerHTML = list.map(q=>{
       const best = quizBests[q.id];
-      return `<div class="quiz-card theme-card ${isLocked(q)?'locked':''}">
+      return `<div class="quiz-card theme-card">
         ${best?`<div class="best-score">🏆 ${best} pts</div>`:''}
         <span class="quiz-badge">${badgeFor(q)} ${q.levelLabel}</span>
         <h3>${q.title}</h3>
@@ -3352,7 +3239,7 @@ function renderQuizGrid(){
   if(list.length===0){ grid.innerHTML = '<div class="no-results">Aucun quiz « par niveau » sur ce thème pour le moment — direction l\'onglet « Par thème », ou consultez les fiches dans l\'encyclopédie.</div>'; return; }
   grid.innerHTML = list.map(q=>{
     const best = quizBests[q.id];
-    return `<div class="quiz-card lvl-${levelTier(q.level)} ${isLocked(q)?'locked':''}">
+    return `<div class="quiz-card lvl-${levelTier(q.level)}">
       ${best?`<div class="best-score">🏆 ${best} pts</div>`:''}
       <span class="quiz-badge">${q.levelLabel}</span>
       <h3>${q.title}</h3>
@@ -3502,7 +3389,7 @@ function subscribeToLeaderboard(){
       const date = d.updatedAt ? d.updatedAt.toDate() : null;
       return {
         uid: doc.id, name: d.displayName || 'Chercheur·euse', points: d.totalPoints||0,
-        streak: d.bestStreak||0, bestRank: d.bestRank||null, selectedBadge: d.selectedBadge||null,
+        streak: d.bestStreak||0, bestRank: d.bestRank||null,
         lastSeen: date ? (date.toLocaleDateString(currentLang)+' '+date.toLocaleTimeString(currentLang,{hour:'2-digit',minute:'2-digit'})) : '—'
       };
     });
@@ -3533,17 +3420,14 @@ function renderLeaderboard(){
   }
   const myUid = auth.currentUser ? auth.currentUser.uid : null;
   lastLeaderboard = leaderboardUsers.map(p=>({...p, me: p.uid===myUid}));
-  box.innerHTML = lastLeaderboard.map((p,i)=>{
-    const badgeDef = BADGES.find(b=>b.id===p.selectedBadge);
-    const badgeIcon = badgeDef ? `<span class="lb-badge-icon" title="${badgeDef.name}">${badgeDef.emoji}</span>` : '';
-    return `<div class="lb-row ${p.me?'me':''}" onclick="openProfile(${i})">
+  box.innerHTML = lastLeaderboard.map((p,i)=>`
+    <div class="lb-row ${p.me?'me':''}" onclick="openProfile(${i})">
       <div class="lb-rank">${i+1}</div>
       <div class="lb-avatar">${initialsOf(p.name)}</div>
-      <div class="lb-name">${badgeIcon}${p.name}${p.me?' (vous)':''}</div>
+      <div class="lb-name">${p.name}${p.me?' (vous)':''}</div>
       <div class="lb-streak">🔥 ${p.streak}</div>
       <div class="lb-points">${p.points} pts</div>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
 function openProfile(i){
   const p = lastLeaderboard[i];
